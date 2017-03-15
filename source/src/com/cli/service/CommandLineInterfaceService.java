@@ -62,7 +62,6 @@ public class CommandLineInterfaceService implements CLI{
                     method.invoke(null,params);
                 }else{
                     String declaringClass = method.getDeclaringClass().getName();
-                    System.out.println(declaringClass);
                     if(classNameReferenceMap.containsKey(declaringClass)){
                         method.invoke(classNameReferenceMap.get(declaringClass),params);
                     }
@@ -90,9 +89,18 @@ public class CommandLineInterfaceService implements CLI{
 
     private static <K,V> void printCommandsMap(Map<K, V> map) {
         for (Map.Entry<K, V> entry : map.entrySet()) {
-            CmdMethod value = (CmdMethod) entry.getValue();
-            System.out.println("Command : " + entry.getKey()
-                    + " Description : " + value.getCmd().description());
+            String commandName = (String) entry.getKey();
+            String desc = ((CmdMethod) entry.getValue()).getCmd().description();
+
+//            test
+            int commandPartSize = 40;
+            System.out.print(commandName);
+            for(int i = 0;i<commandPartSize-commandName.length();i++){
+                System.out.print(" ");
+            }
+            System.out.print(desc);
+            System.out.println();
+
         }
     }
 
