@@ -9,7 +9,7 @@ import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class CommandLineInterfaceService {
+public class CommandLineInterfaceService implements CLI{
     PackageBasedAnnotationScanner packageBasedAnnotationScanner = new PackageBasedAnnotationScanner();
     String welcomeMessage = "";
     boolean isAlive = true;
@@ -34,11 +34,12 @@ public class CommandLineInterfaceService {
         System.out.println("bye!");
     }
 
-    private void call(String s) throws InvocationTargetException, IllegalAccessException {
+    public void call(String s) throws InvocationTargetException, IllegalAccessException {
         List<String> list = new ArrayList<String>();
         Matcher m = Pattern.compile("([^\"]\\S*|\".+?\")\\s*").matcher(s);
-        while (m.find())
+        while (m.find()){
             list.add(m.group(1));
+        }
         Object[] cmdParts = list.toArray();
         Map<String, CmdMethod> commandsMethodMap = packageBasedAnnotationScanner.getCommandsMethodMap();
         String commandName = (String) cmdParts[0];
@@ -66,4 +67,19 @@ public class CommandLineInterfaceService {
     public void setIsAlive(boolean isAlive) {
         this.isAlive = isAlive;
     }
+
+    public void printCommands(){
+        Map<String,CmdMethod> treeMap = new TreeMap<String,CmdMethod>(packageBasedAnnotationScanner.getCommandsMethodMap());
+        printCommandsMap(treeMap);
+    }
+
+    private static <K,V> void printCommandsMap(Map<K, V> map) {
+        for (Map.Entry<K, V> entry : map.entrySet()) {
+            CmdMethod value = (CmdMethod) entry.getValue();
+            System.out.println("Command : " + entry.getKey()
+                    + " Description : " + value.getCmd().description());
+        }
+    }
+
+
 }
