@@ -8,4 +8,5 @@ public interface CLI {
     void setWelcomeMessage(String welcomeMessage);
     void call(String s) throws InvocationTargetException, IllegalAccessException;
     void run() throws InvocationTargetException, IllegalAccessException;
+    void register(Object o);
 }

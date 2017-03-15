@@ -30,12 +30,10 @@ public class PackageBasedAnnotationScanner {
                 Class<?> aClass = Class.forName(className);
                 Method[] declaredMethods = aClass.getDeclaredMethods();
                 for(Method method:declaredMethods){
-                    if(Modifier.isStatic(method.getModifiers())){
-                        CMD[] CMDs = method.getAnnotationsByType(CMD.class);
-                        if(CMDs.length > 0){
-                            CmdMethod cmdMethod = new CmdMethod(CMDs[0], method);
-                            commandsMethodMap.put(CMDs[0].name(), cmdMethod);
-                        }
+                    CMD[] CMDs = method.getAnnotationsByType(CMD.class);
+                    if(CMDs.length > 0){
+                        CmdMethod cmdMethod = new CmdMethod(CMDs[0], method);
+                        commandsMethodMap.put(CMDs[0].name(), cmdMethod);
                     }
                 }
             }else{

@@ -5,12 +5,14 @@ import com.cli.scanner.PackageBasedAnnotationScanner;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.lang.reflect.Modifier;
 import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class CommandLineInterfaceService implements CLI{
     PackageBasedAnnotationScanner packageBasedAnnotationScanner = new PackageBasedAnnotationScanner();
+    Map<String,Object> classNameReferenceMap = new HashMap<String,Object>();
     String welcomeMessage = "";
     boolean isAlive = true;
 
@@ -34,6 +36,11 @@ public class CommandLineInterfaceService implements CLI{
         System.out.println("bye!");
     }
 
+    @Override
+    public void register(Object o) {
+        classNameReferenceMap.put(o.getClass().getName(),o);
+    }
+
     public void call(String s) throws InvocationTargetException, IllegalAccessException {
         List<String> list = new ArrayList<String>();
         Matcher m = Pattern.compile("([^\"]\\S*|\".+?\")\\s*").matcher(s);
@@ -51,7 +58,15 @@ public class CommandLineInterfaceService implements CLI{
                 for (int i = 1;i<=methodParametersCount;i++){
                     params[i-1] = (String) cmdParts[i];
                 }
-                method.invoke(null,params);
+                if(Modifier.isStatic(method.getModifiers())){
+                    method.invoke(null,params);
+                }else{
+                    String declaringClass = method.getDeclaringClass().getName();
+                    System.out.println(declaringClass);
+                    if(classNameReferenceMap.containsKey(declaringClass)){
+                        method.invoke(classNameReferenceMap.get(declaringClass),params);
+                    }
+                }
             }else if(cmdParts.length -1 > methodParametersCount){
                 System.out.println("Wrong parameters count! "+cmdParts.length);
             }
