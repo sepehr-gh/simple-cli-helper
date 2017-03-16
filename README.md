@@ -69,6 +69,12 @@ as ```printInt()``` states depeneds on i and its not static, we need to register
  clis.register(integerPrinter);
 ```
 so now, `printint` command has `10` as output. to update state of this reference or any other references of same class type, you have to register them again so it overrides old reference that is saved inside cli service.
-
  
 Also, Note that method inputs type has to be ```java.lang.String``` for now. 
+
+### Single Tone CLI Service
+
+you might need to call CLI public methods from outside, or you might need CLI reference for any reasons. in such case you are usually stuck with passing reference to other classes using setters or constructors.
+but if you use SingleToneCliService, you can be sure you are having the same reference all over your application. thats why we *strongly* suggest you to use ```SingleToneCliService``` class over ```CommandLineInterfaceService``` one.
+
+you can check available tests on SingleToneCLIService for examples.
