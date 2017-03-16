@@ -47,4 +47,28 @@ Msg body: hi body, how u doing?
 
 so you could replace ```static void sendMessage(String to,String body)``` with any other methods or add more commands to your application just by using ```@CMD``` annotation on static methods.
 
-Note that method inputs type has to be ```java.lang.String``` for now. 
+you might also want to map a command to non-static methods. to do that cliService needs an reference of method holder class to invoke the method on it. you can register your references to cliService and it handles the rest!
+Consider this IntegerPrinter class:
+
+```
+public class IntegerPrinter {
+    public int i;
+
+    @CMD(name = "printint")
+    public void printInt(){
+        System.out.println(i);
+    }
+}
+```
+as ```printInt()``` states depeneds on i and its not static, we need to register one reference of this class to our CLIService. here is how:
+
+```
+ IntegerPrinter integerPrinter = new IntegerPrinter();
+ integerPrinter.i = 10;
+
+ clis.register(integerPrinter);
+```
+so now, `printint` command has `10` as output. to update state of this reference or any other references of same class type, you have to register them again so it overrides old reference that is saved inside cli service.
+
+ 
+Also, Note that method inputs type has to be ```java.lang.String``` for now. 
