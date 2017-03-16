@@ -1,4 +1,4 @@
-package com.cli.annotations;
+package com.sepehrGh.cli.annotations;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

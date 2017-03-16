@@ -1,7 +1,7 @@
-package com.cli.service;
+package com.sepehrGh.cli.service;
 
-import com.cli.helpers.CmdMethod;
-import com.cli.scanner.PackageBasedAnnotationScanner;
+import com.sepehrGh.cli.helpers.CmdMethod;
+import com.sepehrGh.cli.scanner.PackageBasedAnnotationScanner;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;

@@ -1,7 +1,7 @@
-package com.cli.test;
+package com.sepehrGh.cli.test;
 
-import com.cli.service.CLI;
-import com.cli.service.SingleToneCliService;
+import com.sepehrGh.cli.service.CLI;
+import com.sepehrGh.cli.service.SingleToneCliService;
 
 public class SingleToneTest {
     public static void main(String[] args) {

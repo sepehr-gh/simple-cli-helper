@@ -1,4 +1,4 @@
-package com.cli.service;
+package com.sepehrGh.cli.service;
 
 public class SingleToneCliService extends CommandLineInterfaceService implements CLI{
     static SingleToneCliService singleToneCliService = new SingleToneCliService();

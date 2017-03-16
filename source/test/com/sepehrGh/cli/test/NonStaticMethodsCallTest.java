@@ -1,8 +1,8 @@
-package com.cli.test;
+package com.sepehrGh.cli.test;
 
-import com.cli.service.CommandLineInterfaceService;
-import com.cli.service.SingleToneCliService;
-import com.cli.test.cliServices.IntegerPrinter;
+import com.sepehrGh.cli.service.CommandLineInterfaceService;
+import com.sepehrGh.cli.service.SingleToneCliService;
+import com.sepehrGh.cli.test.cliServices.IntegerPrinter;
 
 public class NonStaticMethodsCallTest {
     public static void main(String[] args) {

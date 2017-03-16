@@ -1,6 +1,6 @@
-package com.cli.helpers;
+package com.sepehrGh.cli.helpers;
 
-import com.cli.annotations.CMD;
+import com.sepehrGh.cli.annotations.CMD;
 
 import java.lang.reflect.Method;
 

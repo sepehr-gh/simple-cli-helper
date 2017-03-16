@@ -1,13 +1,12 @@
-package com.cli.scanner;
+package com.sepehrGh.cli.scanner;
 
-import com.cli.annotations.CMD;
-import com.cli.helpers.CmdMethod;
+import com.sepehrGh.cli.annotations.CMD;
+import com.sepehrGh.cli.helpers.CmdMethod;
 
 import java.io.DataInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.lang.reflect.Method;
-import java.lang.reflect.Modifier;
 import java.util.HashMap;
 import java.util.Map;
 

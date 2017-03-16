@@ -1,6 +1,6 @@
-package com.cli.test.cliServices;
+package com.sepehrGh.cli.test.cliServices;
 
-import com.cli.annotations.CMD;
+import com.sepehrGh.cli.annotations.CMD;
 
 public class Messenger {
 

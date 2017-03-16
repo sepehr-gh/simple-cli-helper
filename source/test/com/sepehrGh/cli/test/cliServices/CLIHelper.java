@@ -1,8 +1,8 @@
-package com.cli.test.cliServices;
+package com.sepehrGh.cli.test.cliServices;
 
-import com.cli.annotations.CMD;
-import com.cli.service.CLI;
-import com.cli.service.CommandLineInterfaceService;
+import com.sepehrGh.cli.annotations.CMD;
+import com.sepehrGh.cli.service.CLI;
+import com.sepehrGh.cli.service.CommandLineInterfaceService;
 
 public class CLIHelper {
     CLI cli;

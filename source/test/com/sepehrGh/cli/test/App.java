@@ -1,7 +1,7 @@
-package com.cli.test;
+package com.sepehrGh.cli.test;
 
-import com.cli.service.CommandLineInterfaceService;
-import com.cli.test.cliServices.CLIHelper;
+import com.sepehrGh.cli.service.CommandLineInterfaceService;
+import com.sepehrGh.cli.test.cliServices.CLIHelper;
 
 public class App {
     public static void main(String[] args) {
