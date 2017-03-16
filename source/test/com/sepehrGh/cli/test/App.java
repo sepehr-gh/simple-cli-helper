@@ -7,7 +7,7 @@ public class App {
     public static void main(String[] args) {
         try {
             CommandLineInterfaceService clis = new CommandLineInterfaceService();
-            clis.scan("com.cli.test.cliServices");
+            clis.scan("com.sepehrGh.cli.test.cliServices");
             clis.setWelcomeMessage("Welcome to this test ...");
 
             /*

@@ -10,4 +10,5 @@ import java.lang.annotation.Target;
 public @interface CMD {
     String name();
     String description() default "";
+    boolean nullable() default false;
 }

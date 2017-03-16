@@ -1,5 +1,6 @@
 package com.sepehrGh.cli.service;
 
+import com.sepehrGh.cli.annotations.CMD;
 import com.sepehrGh.cli.helpers.CmdMethod;
 import com.sepehrGh.cli.scanner.PackageBasedAnnotationScanner;
 
@@ -53,11 +54,16 @@ public class CommandLineInterfaceService implements CLI{
         String commandName = (String) cmdParts[0];
         if(commandsMethodMap.containsKey(commandName)){
             Method method = commandsMethodMap.get(commandName).getMethod();
+            CMD cmd = commandsMethodMap.get(commandName).getCmd();
             int methodParametersCount = method.getParameterCount();
-            if((cmdParts.length - 1) == methodParametersCount){
+            if((cmd.nullable() && (cmdParts.length - 1) <= methodParametersCount) || (cmdParts.length - 1) == methodParametersCount){
                 String[] params = new String[methodParametersCount];
-                for (int i = 1;i<=methodParametersCount;i++){
-                    params[i-1] = (String) cmdParts[i];
+                for (int i = 1;i <= methodParametersCount;i++){
+                    if(i <= (cmdParts.length - 1))
+                        params[i-1] = (String) cmdParts[i];
+                    else
+                        params[i-1] = null;
+
                 }
                 if(Modifier.isStatic(method.getModifiers())){
                     method.invoke(null,params);
@@ -67,8 +73,8 @@ public class CommandLineInterfaceService implements CLI{
                         method.invoke(classNameReferenceMap.get(declaringClass),params);
                     }
                 }
-            }else if(cmdParts.length -1 > methodParametersCount){
-                System.out.println("Wrong parameters count! "+cmdParts.length);
+            }else {
+                System.out.println("Wrong parameters count!");
             }
         }else{
             System.out.println("No such command found. "+cmdParts[0]);
