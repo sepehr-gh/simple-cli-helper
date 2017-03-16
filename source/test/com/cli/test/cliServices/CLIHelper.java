@@ -15,4 +15,9 @@ public class CLIHelper {
     public void printHelp(){
         cli.printCommands();
     }
+
+    @CMD(name = "quit")
+    public void quit(){
+        cli.setIsAlive(false);
+    }
 }

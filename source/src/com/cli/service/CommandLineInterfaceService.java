@@ -16,9 +16,10 @@ public class CommandLineInterfaceService implements CLI{
     String welcomeMessage = "";
     boolean isAlive = true;
 
-    public CommandLineInterfaceService(String packageName) throws Exception {
-        packageBasedAnnotationScanner.scan(packageName);
+    public CommandLineInterfaceService() {
     }
+
+
 
     public void run() throws InvocationTargetException, IllegalAccessException {
         System.out.println(welcomeMessage);
@@ -26,11 +27,11 @@ public class CommandLineInterfaceService implements CLI{
         Scanner scanner = new Scanner(System.in);
         String s = "";
         while (isAlive){
+            System.out.print("> ");
+            s = scanner.nextLine();
             if(!s.equals("")){
                 call(s);
             }
-            System.out.print("> ");
-            s = scanner.nextLine();
         }
 
         System.out.println("bye!");
@@ -80,6 +81,11 @@ public class CommandLineInterfaceService implements CLI{
 
     public void setIsAlive(boolean isAlive) {
         this.isAlive = isAlive;
+    }
+
+    @Override
+    public void scan(String packageName) throws Exception {
+        packageBasedAnnotationScanner.scan(packageName);
     }
 
     public void printCommands(){

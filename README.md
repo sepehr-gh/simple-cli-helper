@@ -28,7 +28,8 @@ Here is main method of your application:
 ```
 public static void main(String[] args) {
         try {
-            CommandLineInterfaceService clis = new CommandLineInterfaceService("com.cli.test.cliServices");
+            CommandLineInterfaceService clis = new CommandLineInterfaceService();
+            clis.scan("com.cli.test.cliServices"); // you can scan more packages
             clis.setWelcomeMessage("Welcome to this test ...");
             clis.run();
         } catch (Exception e) {
@@ -46,3 +47,4 @@ Msg body: hi body, how u doing?
 
 so you could replace ```static void sendMessage(String to,String body)``` with any other methods or add more commands to your application just by using ```@CMD``` annotation on static methods.
 
+Note that method inputs type has to be ```java.lang.String``` for now. 

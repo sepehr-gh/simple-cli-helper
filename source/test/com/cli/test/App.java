@@ -6,7 +6,8 @@ import com.cli.test.cliServices.CLIHelper;
 public class App {
     public static void main(String[] args) {
         try {
-            CommandLineInterfaceService clis = new CommandLineInterfaceService("com.cli.test.cliServices");
+            CommandLineInterfaceService clis = new CommandLineInterfaceService();
+            clis.scan("com.cli.test.cliServices");
             clis.setWelcomeMessage("Welcome to this test ...");
 
             /*
