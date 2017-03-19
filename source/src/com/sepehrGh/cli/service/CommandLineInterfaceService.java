@@ -91,8 +91,15 @@ public class CommandLineInterfaceService implements CLI{
 
     @Override
     public void scan(String packageName) throws Exception {
-        packageBasedAnnotationScanner.scan(packageName);
+        packageBasedAnnotationScanner.scan(packageName,null,false);
     }
+
+    @Override
+    public void scan(String packageName, Class aClass, boolean isJar) throws Exception {
+        packageBasedAnnotationScanner.scan(packageName,aClass,isJar);
+
+    }
+
 
     public void printCommands(){
         Map<String,CmdMethod> treeMap = new TreeMap<String,CmdMethod>(packageBasedAnnotationScanner.getCommandsMethodMap());
