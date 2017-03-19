@@ -5,6 +5,7 @@ import java.lang.reflect.InvocationTargetException;
 public interface CLI {
     void scan(String packageName) throws Exception;
     void scan(String packageName,Class aClass,boolean isJar) throws Exception;
+    void scan(String packageName,Class aClass) throws Exception;
     void printCommands();
     void setIsAlive(boolean isAlive);
     void setWelcomeMessage(String welcomeMessage);

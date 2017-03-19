@@ -95,6 +95,12 @@ public class CommandLineInterfaceService implements CLI{
     }
 
     @Override
+    public void scan(String packageName, Class aClass) throws Exception {
+        packageBasedAnnotationScanner.scan(packageName,aClass,false);
+
+    }
+
+    @Override
     public void scan(String packageName, Class aClass, boolean isJar) throws Exception {
         packageBasedAnnotationScanner.scan(packageName,aClass,isJar);
 

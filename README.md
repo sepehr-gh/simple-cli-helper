@@ -81,3 +81,8 @@ but if you use SingleToneCliService, you can be sure you are having the same ref
 
 you can check available tests on SingleToneCLIService for examples.
 
+### SCANNER TRICKS
+
+when calling `cli.scan()` it normally uses `PackageBasedAnnotationScanner` classLoader to search for packages and classes inside your application classpath. In case you think `PackageBasedAnnotationScanner` has no access to your main application class paths from its ClassLoader, you might want to give it an access to one of your main application classes classLoader. in that case, you can pass it as second argument of scan method.
+be adviced that in case you are using *simple-cli-service.jar* as your application external library, you HAVE to send one class reference of your main application to scan. also set third argument, isJar, `true` to let scanner know it should be looking for classes inside your main application jar file (if you are using cliService inside another jar)
+
