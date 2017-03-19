@@ -47,6 +47,8 @@ Msg body: hi body, how u doing?
 
 so you could replace ```static void sendMessage(String to,String body)``` with any other methods or add more commands to your application just by using ```@CMD``` annotation on static methods.
 
+Passing less arguments when calling a command, can still call it without any errors if you set ```nullable=true``` in you ```@CMD()```, LIKE ```CMD(name ="sendmsg",description = "..",nullable = true)```. passed arguments will get their values, others will receive `null`. 
+
 you might also want to map a command to non-static methods. to do that cliService needs an reference of method holder class to invoke the method on it. you can register your references to cliService and it handles the rest!
 Consider this IntegerPrinter class:
 
@@ -78,3 +80,4 @@ you might need to call CLI public methods from outside, or you might need CLI re
 but if you use SingleToneCliService, you can be sure you are having the same reference all over your application. thats why we *strongly* suggest you to use ```SingleToneCliService``` class over ```CommandLineInterfaceService``` one.
 
 you can check available tests on SingleToneCLIService for examples.
+
