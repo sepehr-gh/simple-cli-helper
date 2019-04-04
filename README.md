@@ -1,6 +1,8 @@
 # simple-cli-helper
 
-A basic commandline interface helper, trying to help creating commandline applications. Easily invoke a method in your application that is mapped to a command!
+(2019 update: I was just playing with codes :|)
+
+A basic (AND NOOBISH) commandline interface helper, trying to help creating commandline applications. Easily invoke a method in your application that is mapped to a command!
 
 simply use `@CMD` annotations on methods you want to introduce as a command. Then choose and implementation of `CLI interface` and scan packages for this annotation. you are done!
 
